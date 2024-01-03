@@ -1,31 +1,35 @@
+vim.g.mapleader = ","
+vim.g.maplocalleader = ","
+vim.wo.number = true
+vim.wo.relativenumber = true
 -- install and load `lazy` plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    "Mofiqul/dracula.nvim",
-    {
-        "nvim-tree/nvim-tree.lua",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function()
-            require("config.nvim-tree")
-        end,
-    },
-    {
-        "nvim-telescope/telescope.nvim",
-        branch = "0.1.x",
-        dependencies = { "nvim-lua/plenary.nvim" },
-    },
+	"Mofiqul/dracula.nvim",
+	{
+		"nvim-tree/nvim-tree.lua",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("config.nvim-tree")
+		end,
+	},
+	{
+		"nvim-telescope/telescope.nvim",
+		branch = "0.1.x",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
 	{
 		"williamboman/mason.nvim",
 		opts = {
@@ -46,22 +50,17 @@ require("lazy").setup({
 		},
 	},
 	--"williamboman/nvim-lsp-installer",
-    "neovim/nvim-lspconfig",
-    {
-        "simrat39/rust-tools.nvim",
-        ft = "rust",
-        dependencies = "neovim/nvim-lspconfig",
-    },
-    spec = {
-        { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-        { import = "lazyvim.plugins.extras.lang.rust" },
-    },
+	"neovim/nvim-lspconfig",
+	{
+		"simrat39/rust-tools.nvim",
+		ft = "rust",
+		dependencies = "neovim/nvim-lspconfig",
+	},
+	spec = {
+		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
+		{ import = "lazyvim.plugins.extras.lang.rust" },
+	},
 })
-
-vim.g.mapleader = ","
-vim.g.maplocalleader = ","
-vim.wo.number = true
-vim.wo.relativenumber = true
 
 -- config require for nvim-tree
 vim.g.loaded_netrw = 1
@@ -88,4 +87,3 @@ set.expandtab = true
 --})
 --require("nvim-lsp-installer").setup()
 --require("lspconfig").rust_analyzer.setup{}
-
