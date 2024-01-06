@@ -10,11 +10,11 @@ ln -s "${PWD}/nvim" ~/.config/nvim
 if [[ -f ~/.zshrc ]]; then
 	mv ~/.zshrc ~/.zshrc-old
 fi
-ln -s "${PWD}/zshrc ~/.zshrc"
+ln -s "${PWD}/zshrc" ~/.zshrc
 
 # setup power10k
 if [[ -f ~/.p10k.zsh ]]; then
 	mv ~/.p10k.zsh ~/.p10k.zsh-old
 fi
-ln -s "${PWD}/p10k.zsh ~/.p10k.zsh"
+ln -s "${PWD}/p10k.zsh" ~/.p10k.zsh
 
