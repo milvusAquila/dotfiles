@@ -56,10 +56,10 @@ require("lazy").setup({
 		ft = "rust",
 		dependencies = "neovim/nvim-lspconfig",
 	},
-	spec = {
-		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
-		{ import = "lazyvim.plugins.extras.lang.rust" },
-	},
+	--spec = {
+	--spec = 	{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
+	--spec = 	{ import = "lazyvim.plugins.extras.lang.rust" },
+	--spec = },
 })
 
 -- config require for nvim-tree
