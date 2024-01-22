@@ -18,3 +18,14 @@ if [[ -f ~/.p10k.zsh ]]; then
 fi
 ln -s "${PWD}/p10k.zsh" ~/.p10k.zsh
 
+# setup vim
+if [[ -d ~/.vimrc ]]; then
+	mv ~/.vimrc ~/.vimrc-old
+fi
+ln -s "${PWD}/vimrc" ~/.vimrc
+
+# setup XCompose
+if [[ -d ~/.XCompose ]]; then
+	mv ~/.XCompose ~/.XCompose-old
+fi
+ln -s "${PWD}/XCompose" ~/.XCompose
