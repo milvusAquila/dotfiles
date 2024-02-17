@@ -1,31 +1,37 @@
 #!/usr/bin/bash
 
+function install_file() {
+	local -r real=$1
+	local -r dot=$2
+	if [[ -L "${real}" ]]; then
+		rm "${real}"
+	elif [[ -f "${real}" ]]; then
+		mv "${real}" "${real}-old"
+	fi
+	ln -s "${PWD}/${dot}" "${real}"
+}
+function install_folder() {
+	local -r real=$1
+	local -r dot=$2
+	if [[ -L "${real}" ]]; then
+		rm "${real}"
+	elif [[ -d "${real}" ]]; then
+		mv "${real}" "${real}-old"
+	fi
+	ln -s "${PWD}/${dot}" "${real}"
+}
+
 # setup nvim
-if [[ -d ~/.config/nvim ]]; then
-	mv ~/.config/nvim ~/.config/nvim-old
-fi
-ln -s "${PWD}/nvim" ~/.config/nvim
+install_folder "${HOME}/.config/nvim" "nvim"
 
 # setup oh-my-zsh
-if [[ -f ~/.zshrc ]]; then
-	mv ~/.zshrc ~/.zshrc-old
-fi
-ln -s "${PWD}/zshrc" ~/.zshrc
+install_file "${HOME}/.zshrc" "zshrc"
 
 # setup power10k
-if [[ -f ~/.p10k.zsh ]]; then
-	mv ~/.p10k.zsh ~/.p10k.zsh-old
-fi
-ln -s "${PWD}/p10k.zsh" ~/.p10k.zsh
+install_file "${HOME}/.p10k.zsh" "p10k.zsh"
 
 # setup vim
-if [[ -d ~/.vimrc ]]; then
-	mv ~/.vimrc ~/.vimrc-old
-fi
-ln -s "${PWD}/vimrc" ~/.vimrc
+install_file "${HOME}/.vimrc" "vimrc"
 
 # setup XCompose
-if [[ -d ~/.XCompose ]]; then
-	mv ~/.XCompose ~/.XCompose-old
-fi
-ln -s "${PWD}/XCompose" ~/.XCompose
+install_file "${HOME}/.XCompose" "XCompose"
