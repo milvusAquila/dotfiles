@@ -101,6 +101,7 @@ alias ll="ls -lAh"
 alias py="python"
 alias df="df -h" # --human-readable
 alias n="nvim"
+alias venv="source bin/activate"
 
 alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
 alias update-arch='yay'
