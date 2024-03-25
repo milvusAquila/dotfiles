@@ -101,6 +101,7 @@ alias ll="ls -lAh"
 alias py="python"
 alias df="df -h" # --human-readable
 alias n="nvim"
+alias kvm="qemu-system-x86_64"
 alias venv="source bin/activate"
 
 alias ip="ip -c=always"
