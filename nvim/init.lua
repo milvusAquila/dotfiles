@@ -272,6 +272,7 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
 -- [[ Basic Keymaps ]]
+vim.keymap.set('i', '²', '<esc>')
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
