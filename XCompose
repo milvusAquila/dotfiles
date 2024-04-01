@@ -1,10 +1,5 @@
 # UTF-8 (Unicode) Compose sequences
 #
-# Perso
-<dead_tilde> <equal>                   : "≅"   congruent # CONGRUENT
-<equal> <dead_tilde>                   : "≅"   congruent # CONGRUENT
-<equal> <underscore>                   : "≡"   equiv # IDENTICAL
-<underscore> <equal>                   : "≡"   equiv # IDENTICAL
 # Spacing versions of accents (mostly)
 <dead_tilde> <space>			: "~"	asciitilde # TILDE
 <dead_tilde> <dead_tilde>		: "~"	asciitilde # TILDE
@@ -4847,6 +4842,9 @@
 <Multi_key> <asciitilde> <asciitilde>	: "≈"	U2248 # ~ ~ ALMOST EQUAL TO
 <Multi_key> <dead_tilde> <dead_tilde>	: "≈"	U2248 # ~ ~ ALMOST EQUAL TO
 <Multi_key> <equal> <underscore>	: "≡"	U2261 # = _ IDENTICAL TO
+<Multi_key> <unserscore> <equal>	: "≡"	U2261 # = _ IDENTICAL TO
+<Multi_key> <dead_tilde> <equal>	: "≅"   U2245 # ~ = CONGRUENT / APPROXIMATELY EQUAL TO
+<Multi_key> <equal> <dead_tilde>	: "≅"   U2245 # = ~ CONGRUENT / APPROXIMATELY EQUAL TO
 <Multi_key> <underscore> <U2260>	: "≢"	U2262 # _ ≠ NOT IDENTICAL TO
 <Multi_key> <U2260> <underscore>	: "≢"	U2262 # ≠ _ NOT IDENTICAL TO
 <Multi_key> <less> <underscore>		: "≤"	U2264 # < _ LESS-THAN OR EQUAL TO
