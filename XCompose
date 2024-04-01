@@ -1,5 +1,10 @@
 # UTF-8 (Unicode) Compose sequences
 #
+# Perso
+<dead_tilde> <equal>                   : "≅"   congruent # CONGRUENT
+<equal> <dead_tilde>                   : "≅"   congruent # CONGRUENT
+<equal> <underscore>                   : "≡"   equiv # IDENTICAL
+<underscore> <equal>                   : "≡"   equiv # IDENTICAL
 # Spacing versions of accents (mostly)
 <dead_tilde> <space>			: "~"	asciitilde # TILDE
 <dead_tilde> <dead_tilde>		: "~"	asciitilde # TILDE
