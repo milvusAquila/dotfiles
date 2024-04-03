@@ -105,6 +105,7 @@ alias kvm="qemu-system-x86_64"
 alias venv="source bin/activate"
 
 alias ip="ip -c=always"
+alias wifi="\$(if [[ \"\$(nmcli radio wifi)\" = \"enabled\" ]]; then nmcli radio wifi off; else nmcli radio wifi on; fi)"
 
 alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
 alias update-arch='yay && sudo flatpak update'
