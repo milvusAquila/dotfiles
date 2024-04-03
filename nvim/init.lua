@@ -225,17 +225,17 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
-  { 'm4xshen/autoclose.nvim', opts = {}},
+  { 'm4xshen/autoclose.nvim', opts = {} },
   {
     'aurum77/live-server.nvim',
-    build = function ()
-      require'live_server.util'.install()
+    build = function()
+      require 'live_server.util'.install()
     end,
   },
   {
     'olrtg/nvim-emmet',
-    config = function ()
-      vim.keymap.set({ 'n', 'v' }, '<leader>xe', require'nvim-emmet'.wrap_with_abbreviation)
+    config = function()
+      vim.keymap.set({ 'n', 'v' }, '<leader>xe', require 'nvim-emmet'.wrap_with_abbreviation)
     end
   },
 
@@ -536,7 +536,7 @@ local servers = {
   pyright = {},
   rust_analyzer = {},
   -- tsserver = {},
-  html = { filetypes = { 'html', 'twig', 'hbs'} },
+  html = { filetypes = { 'html', 'twig', 'hbs' } },
 
   lua_ls = {
     Lua = {
