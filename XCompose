@@ -4842,7 +4842,7 @@
 <Multi_key> <asciitilde> <asciitilde>	: "≈"	U2248 # ~ ~ ALMOST EQUAL TO
 <Multi_key> <dead_tilde> <dead_tilde>	: "≈"	U2248 # ~ ~ ALMOST EQUAL TO
 <Multi_key> <equal> <underscore>	: "≡"	U2261 # = _ IDENTICAL TO
-<Multi_key> <unserscore> <equal>	: "≡"	U2261 # = _ IDENTICAL TO
+<Multi_key> <underscore> <equal>	: "≡"	U2261 # = _ IDENTICAL TO
 <Multi_key> <dead_tilde> <equal>	: "≅"   U2245 # ~ = CONGRUENT / APPROXIMATELY EQUAL TO
 <Multi_key> <equal> <dead_tilde>	: "≅"   U2245 # = ~ CONGRUENT / APPROXIMATELY EQUAL TO
 <Multi_key> <underscore> <U2260>	: "≢"	U2262 # _ ≠ NOT IDENTICAL TO
