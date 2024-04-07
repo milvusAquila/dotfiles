@@ -95,6 +95,7 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# Standard aliases
 alias ls="ls --color=auto"
 alias l="ls -A"
 alias ll="ls -lAh"
@@ -103,10 +104,21 @@ alias df="df -h" # --human-readable
 alias n="nvim"
 alias kvm="qemu-system-x86_64"
 alias venv="source bin/activate"
+alias pd="podman"
 
+# Network aliases
 alias ip="ip -c=always"
 alias wifi="\$(if [[ \"\$(nmcli radio wifi)\" = \"enabled\" ]]; then nmcli radio wifi off; else nmcli radio wifi on; fi)"
+alias dhcp="sudo sed -i '/DHCP=yes/s/^#//g' /etc/systemd/network/20-wired.network &&\
+  sudo sed -i '/Gateway=192.168.0.254/s/^/#/g' /etc/systemd/network/20-wired.network &&\
+  sudo sed -i '/Address=192.168.0.11\/24/s/^/#/g' /etc/systemd/network/20-wired.network &&\
+  sudo systemctl restart systemd-networkd"
+alias static="sudo sed -i '/DHCP=yes/s/^/#/g' /etc/systemd/network/20-wired.network &&\
+  sudo sed -i '/Gateway=192.168.0.254/s/^#//g' /etc/systemd/network/20-wired.network &&\
+  sudo sed -i '/Address=192.168.0.11\/24/s/^#//g' /etc/systemd/network/20-wired.network &&\
+  sudo systemctl restart systemd-networkd"
 
+# Arch-specific aliases (from https://github.com/Gaming-Linux-FR/Architect)
 alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
 alias update-arch='yay && sudo flatpak update'
 alias update-mirrors='sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist && sudo pacman -Syyu'
