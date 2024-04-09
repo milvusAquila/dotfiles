@@ -1,6 +1,7 @@
 export EDITOR=vim
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/dotfiles/ohmyzsh
+export PATH=$PATH:~/.cargo/bin
 
 ZSH_THEME="robbyrussell"
 
