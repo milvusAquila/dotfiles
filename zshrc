@@ -96,6 +96,8 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+export LC_ALL=C
+
 # Standard aliases
 alias ls="ls --color=auto"
 alias l="ls -A"
@@ -106,6 +108,7 @@ alias n="nvim"
 alias kvm="qemu-system-x86_64"
 alias venv="source bin/activate"
 alias pd="podman"
+alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
 
 # Network aliases
 alias ip="ip -c=always"
@@ -124,3 +127,5 @@ alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg
 alias update-arch='yay && sudo flatpak update && rustup update && cargo install-update --all'
 alias update-mirrors='sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist && sudo pacman -Syyu'
 alias clean-arch='yay -Sc && yay -Yc'
+
+eval "$(zoxide init zsh)"
