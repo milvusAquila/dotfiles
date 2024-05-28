@@ -91,7 +91,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+if [[ -f /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme ]]; then
+  source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -104,7 +106,7 @@ alias l="ls -A"
 alias ll="ls -lAh"
 alias py="python"
 alias df="df -h" # --human-readable
-alias n="nvim"
+alias n="nvim -O"
 alias kvm="qemu-system-x86_64"
 alias venv="source bin/activate"
 alias pd="podman"
@@ -114,18 +116,20 @@ alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
 alias ip="ip -c=always"
 alias wifi="\$(if [[ \"\$(nmcli radio wifi)\" = \"enabled\" ]]; then nmcli radio wifi off; else nmcli radio wifi on; fi)"
 alias dhcp="sudo sed -i '/DHCP=yes/s/^#//g' /etc/systemd/network/20-wired.network &&\
-  sudo sed -i '/Gateway=192.168.0.254/s/^/#/g' /etc/systemd/network/20-wired.network &&\
-  sudo sed -i '/Address=192.168.0.11\/24/s/^/#/g' /etc/systemd/network/20-wired.network &&\
+  sudo sed -i '/^Gateway=192.168.0.254/s/^/#/g' /etc/systemd/network/20-wired.network &&\
+  sudo sed -i '/^Address=192.168.0.11\/24/s/^/#/g' /etc/systemd/network/20-wired.network &&\
   sudo systemctl restart systemd-networkd"
-alias static="sudo sed -i '/DHCP=yes/s/^/#/g' /etc/systemd/network/20-wired.network &&\
+alias static="sudo sed -i '/^DHCP=yes/s/^/#/g' /etc/systemd/network/20-wired.network &&\
   sudo sed -i '/Gateway=192.168.0.254/s/^#//g' /etc/systemd/network/20-wired.network &&\
   sudo sed -i '/Address=192.168.0.11\/24/s/^#//g' /etc/systemd/network/20-wired.network &&\
   sudo systemctl restart systemd-networkd"
 
 # Arch-specific aliases (from https://github.com/Gaming-Linux-FR/Architect)
 alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
-alias update-arch='yay && sudo flatpak update && rustup update && cargo install-update --all omz update'
+alias update-arch='paru && sudo flatpak update && rustup update && cargo install-update --all && omz update'
 alias update-mirrors='sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist && sudo pacman -Syyu'
-alias clean-arch='yay -Sc && yay -Yc'
+alias clean-arch='paru -Sc && paru -Yc'
 
-eval "$(zoxide init zsh)"
+if [[ -x "$(command -v zoxide)" ]]; then
+  eval "$(zoxide init zsh)"
+fi
