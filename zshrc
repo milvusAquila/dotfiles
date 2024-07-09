@@ -111,6 +111,10 @@ alias kvm="qemu-system-x86_64"
 alias venv="source bin/activate"
 alias pd="podman"
 alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
+alias cyberchef='vivaldi /usr/share/webapps/cyberchef/index.html'
+
+# C/C++ build
+alias cbuild='cmake --build .'
 
 # Network aliases
 alias ip="ip -c=always"
@@ -124,7 +128,7 @@ alias static="sudo sed -i '/^DHCP=yes/s/^/#/g' /etc/systemd/network/20-wired.net
   sudo sed -i '/Address=192.168.0.11\/24/s/^#//g' /etc/systemd/network/20-wired.network &&\
   sudo systemctl restart systemd-networkd"
 
-# Arch-specific aliases (from https://github.com/Gaming-Linux-FR/Architect)
+# Arch-specific aliases (from https://codeberg.org/Gaming-Linux-FR/Architect)
 alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
 alias update-arch='paru && sudo flatpak update && rustup update && cargo install-update --all && omz update'
 alias update-mirrors='sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist && sudo pacman -Syyu'
