@@ -130,9 +130,9 @@ alias static="sudo sed -i '/^DHCP=yes/s/^/#/g' /etc/systemd/network/20-wired.net
 
 # Arch-specific aliases (from https://codeberg.org/Gaming-Linux-FR/Architect)
 alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
-alias update-arch='paru && sudo flatpak update && rustup update && cargo install-update --all && omz update'
+alias update-arch='yay && sudo flatpak update && rustup update && cargo install-update --all && omz update'
 alias update-mirrors='sudo reflector --verbose --score 100 --latest 20 --fastest 5 --sort rate --save /etc/pacman.d/mirrorlist && sudo pacman -Syyu'
-alias clean-arch='paru -Sc && paru -Yc'
+alias clean-arch='yay -Sc && yay -Yc'
 
 if [[ -x "$(command -v zoxide)" ]]; then
   eval "$(zoxide init zsh)"
