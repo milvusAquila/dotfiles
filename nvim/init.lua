@@ -1,4 +1,4 @@
--- from https://github.com/ChrisTitusTech/neovim/blob/main/titus-kickstart/init/lua
+-- from https://github.com/ChrisTitusTech/neovim/blob/main/titus-kickstart.init.lua
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
@@ -50,7 +50,7 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim',       opts = {} },
+      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -86,7 +86,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',  opts = {} },
+  { 'folke/which-key.nvim', opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -247,6 +247,12 @@ require('lazy').setup({
   },
   {
     'tpope/vim-surround', -- Add brackets when text is selected
+  },
+  {
+    'nvim-tree/nvim-web-devicons'
+  },
+  {
+    'echasnovski/mini.icons'
   }
 
 }, {})
@@ -480,14 +486,12 @@ local on_attach = function(_, bufnr)
   end
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-  nmap('<leader>ca', function()
-    vim.lsp.buf.code_action { context = { only = { 'quickfix', 'refactor', 'source' } } }
-  end, '[C]ode [A]ction')
+  nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
-  nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+  nmap('gd', vim.lsp.buf.definitions, '[G]oto [D]efinition')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-  nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-  nmap('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+  nmap('gI', vim.lsp.buf.implementations, '[G]oto [I]mplementation')
+  nmap('<leader>D', vim.lsp.buf.lsp_type_definitions, 'Type [D]efinition')
   nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
   nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
@@ -510,22 +514,22 @@ local on_attach = function(_, bufnr)
 end
 
 -- document existing key chains
-require('which-key').register {
-  ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-  ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-  ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
-  ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
-  ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-  ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-  ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
-  ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-}
+-- require('which-key') {
+--   {'<leader>c', group = '[C]ode' },
+--   {'<leader>d', group = '[D]ocument' },
+--   {'<leader>g', group = '[G]it' },
+--   {'<leader>h', group = 'Git [H]unk' },
+--   {'<leader>r', group = '[R]ename' },
+--   {'<leader>s', group = '[S]earch' },
+--   {'<leader>t', group = '[T]oggle' },
+--   {'<leader>w', group = '[W]orkspace' },
+-- }
 -- register which-key VISUAL mode
 -- required for visual <leader>hs (hunk stage) to work
-require('which-key').register({
-  ['<leader>'] = { name = 'VISUAL <leader>' },
-  ['<leader>h'] = { 'Git [H]unk' },
-}, { mode = 'v' })
+-- require('which-key')({
+--   {'<leader>', group = 'VISUAL <leader>' },
+--   {'<leader>h', desc = 'Git [H]unk' },
+-- }, { mode = 'v' })
 
 -- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the servers.
