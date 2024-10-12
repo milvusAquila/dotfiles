@@ -1,4 +1,4 @@
-export EDITOR=vim
+export EDITOR=nvim
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/dotfiles/ohmyzsh
 export PATH=$PATH:~/.cargo/bin
@@ -52,7 +52,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rust podman extract adb) # zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting zsh-autocomplete)
+plugins=(git rust podman extract) # zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting zsh-autocomplete)
 
 source $ZSH/oh-my-zsh.sh
 
