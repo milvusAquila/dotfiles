@@ -14,7 +14,7 @@ function install_file() {
 	if [[ -L "${real}" ]]; then
 		rm "${real}"
 	elif [[ -f "${real}" ]]; then
-		mv "${real}" "${real}-old"
+		mv "${real}" "${real}.bak"
 	fi
 	exec_log "ln -s ${FILE_PATH}/${dot} ${real}" "Create link from ${real} to ${FILE_PATH}/${dot}"
 }
@@ -24,13 +24,13 @@ function install_folder() {
 	if [[ -L "${real}" ]]; then
 		rm "${real}"
 	elif [[ -d "${real}" ]]; then
-		mv "${real}" "${real}-old"
+		mv "${real}" "${real}.bak"
 	fi
 	exec_log "ln -s ${FILE_PATH}/${dot} ${real}" "Create link from ${real} to ${FILE_PATH}/${dot}"
 }
 
 # setup nvim
-install_folder "${HOME}/.config/nvim" "nvim"
+#install_folder "${HOME}/.config/nvim" "nvim"
 
 # setup oh-my-zsh
 install_file "${HOME}/.zshrc" "zshrc"
