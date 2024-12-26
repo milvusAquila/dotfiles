@@ -30,7 +30,7 @@ function install_folder() {
 }
 
 # setup nvim
-#install_folder "${HOME}/.config/nvim" "nvim"
+install_folder "${HOME}/.config/nvim" "nvim"
 
 # setup oh-my-zsh
 install_file "${HOME}/.zshrc" "zshrc"
