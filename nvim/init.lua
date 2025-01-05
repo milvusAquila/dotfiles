@@ -253,8 +253,11 @@ require('lazy').setup({
   },
   {
     'echasnovski/mini.icons'
+  },
+  {
+    'slint-ui/vim-slint'
+    -- run for Slint Rust support: :TSInstall slint  :LspInstall slint_lsp
   }
-
 }, {})
 
 -- [[ Setting options ]]
