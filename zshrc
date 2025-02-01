@@ -111,7 +111,6 @@ alias kvm="qemu-system-x86_64"
 alias venv="source bin/activate"
 alias pd="podman"
 alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
-alias cyberchef='vivaldi /usr/share/webapps/cyberchef/index.html'
 
 # C/C++ build
 alias cbuild='cmake --build .'
