@@ -1,5 +1,9 @@
 # UTF-8 (Unicode) Compose sequences
 #
+<Multi_key> <q> <q> <c> <h>		: "quelque chose"
+<Multi_key> <q> <q> <n>			: "quelqu'un"
+<Multi_key> <b> <c> <p>			: "beaucoup"
+<Multi_key> <q> <d> <m>			: "quantité de matière"
 <Multi_key> <c> <underscore> 		: "comme"
 <Multi_key> <f> <underscore> 		: "femme"
 <Multi_key> <h> <underscore> 		: "homme"

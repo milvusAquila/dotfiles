@@ -107,6 +107,7 @@ alias ll="ls -lAh"
 alias py="python"
 alias df="df -h" # --human-readable
 alias n="nvim -O"
+alias rgrep="grep -R . -ne"
 alias kvm="qemu-system-x86_64"
 alias venv="source bin/activate"
 alias pd="podman"
