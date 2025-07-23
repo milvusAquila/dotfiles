@@ -110,7 +110,7 @@ alias n="nvim -O"
 alias rgrep="grep -R . -ne"
 alias kvm="qemu-system-x86_64"
 alias venv="source bin/activate"
-alias pd="podman"
+alias ff='fastfetch'
 alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
 
 # C/C++ build
