@@ -8,38 +8,30 @@ function exec_log() {
 	eval "${cmd}"
 	echo "${comment}"
 }
-function install_file() {
+
+function install() {
 	local -r real=$1
 	local -r dot=$2
 	if [[ -L "${real}" ]]; then
 		rm "${real}"
-	elif [[ -f "${real}" ]]; then
+	elif [[ -f "${real}" || -d "${real}" ]]; then
 		mv "${real}" "${real}.bak"
 	fi
-	exec_log "ln -s ${FILE_PATH}/${dot} ${real}" "Create link from ${real} to ${FILE_PATH}/${dot}"
-}
-function install_folder() {
-	local -r real=$1
-	local -r dot=$2
-	if [[ -L "${real}" ]]; then
-		rm "${real}"
-	elif [[ -d "${real}" ]]; then
-		mv "${real}" "${real}.bak"
-	fi
-	exec_log "ln -s ${FILE_PATH}/${dot} ${real}" "Create link from ${real} to ${FILE_PATH}/${dot}"
+	source="$(realpath -s --relative-to "$(dirname "${real}")" "${FILE_PATH}/${dot}")"
+	exec_log "ln -s ${source} ${real}" "Create link from ${real} to ${source}"
 }
 
 # setup nvim
-install_folder "${HOME}/.config/nvim" "nvim"
+install "${HOME}/.config/nvim" "nvim"
 
 # setup oh-my-zsh
-install_file "${HOME}/.zshrc" "zshrc"
+install "${HOME}/.zshrc" "zshrc"
 
 # setup power10k
-install_file "${HOME}/.p10k.zsh" "p10k.zsh"
+install "${HOME}/.p10k.zsh" "p10k.zsh"
 
 # setup vim
-install_file "${HOME}/.vimrc" "vimrc"
+install "${HOME}/.vimrc" "vimrc"
 
 # setup XCompose
-install_file "${HOME}/.XCompose" "XCompose"
+install "${HOME}/.XCompose" "XCompose"
