@@ -98,8 +98,6 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export LC_ALL=C.UTF-8
-
 # Standard aliases
 alias ls="ls --color=auto"
 alias l="ls -A"
@@ -122,12 +120,16 @@ alias wifi="\$(if [[ \"\$(nmcli radio wifi)\" = \"enabled\" ]]; then nmcli radio
 
 # Arch-specific aliases (from https://codeberg.org/Gaming-Linux-FR/Architect)
 alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'
-alias update-arch='yay && sudo flatpak update && rustup update && cargo install-update --all && omz update'
+alias update-arch='sudo pacman -Syu && sudo flatpak update && rustup update && cargo install-update --all && omz update'
 alias update-mirrors='sudo reflector --verbose --protocol https --score 100 --latest 30 --fastest 5 --sort rate -c FR,DE,CH --save /etc/pacman.d/mirrorlist && sudo pacman -Syyu'
-alias clean-arch='yay -Sc && yay -Yc'
+alias clean-arch='sudo pacman -Sc'
 
 if [[ -x "$(command -v zoxide)" ]]; then
   eval "$(zoxide init zsh)"
+fi
+
+if [[ -z "${SSH_CONNECTION}" ]]; then
+    export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 fi
 
 
