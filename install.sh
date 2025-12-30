@@ -24,6 +24,12 @@ function install() {
 # setup nvim
 install "${HOME}/.config/nvim" "nvim"
 
+# setup sway
+install "${HOME}/.config/sway" "sway"
+
+# setup waybar
+install "${HOME}/.config/waybar" "waybar"
+
 # setup oh-my-zsh
 install "${HOME}/.zshrc" "zshrc"
 
