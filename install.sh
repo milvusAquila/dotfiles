@@ -30,11 +30,8 @@ install "${HOME}/.config/sway" "sway"
 # setup waybar
 install "${HOME}/.config/waybar" "waybar"
 
-# setup oh-my-zsh
-install "${HOME}/.zshrc" "zshrc"
-
-# setup power10k
-install "${HOME}/.p10k.zsh" "p10k.zsh"
+# setup bash
+install "${HOME}/.bashrc" "bashrc"
 
 # setup vim
 install "${HOME}/.vimrc" "vimrc"
