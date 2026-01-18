@@ -5,6 +5,11 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
+# Load PS1 (same as fedora in the bash-color-prompt package)
+if [ -f /etc/profile.d/bash-color-prompt.sh ]; then
+    . /etc/profile.d/bash-color-prompt.sh
+fi
+
 # User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
