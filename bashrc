@@ -62,6 +62,10 @@ if [[ -z "${SSH_CONNECTION}" ]]; then
     export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 fi
 
+export HISTCONTROL=ignoreboth:erasedups
+export HISTIGNORE="l *:clear"
+export HISTIGNORE="ll *:clear"
+export HISTIGNORE="ls *:clear"
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
