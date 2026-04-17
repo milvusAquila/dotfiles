@@ -32,6 +32,18 @@ let g:netrw_winsize = 15 " only take 20% of screen in split mode
 "autocmd VimEnter * :Vexplore | wincmd p " open automaticly
 
 " auto-pairs https://github.com/jiangmiao/auto-pairs
-au FileType ocaml    let b:AutoPairs = AutoPairsDefine({'begin': 'end//n]'})
-au FileType rust     let b:AutoPairs = AutoPairsDefine({"\w\zs'": ""})
-au FileType rust     let b:AutoPairs = AutoPairsDefine({'\w\zs<': '>'})
+au FileType ocaml let b:AutoPairs = AutoPairsDefine({
+            \ 'begin': 'end//n]',
+            \ "'": ""
+            \ })
+au FileType rust let b:AutoPairs = AutoPairsDefine({
+            \ "\w\zs'": "",
+            \ '\w\zs<': '>'
+            \ })
+
+au FileType c :call CFileType()
+
+function! CFileType()
+    imap u16 uint16_t
+    imap u32 uint32_t
+endfunction

@@ -5,10 +5,33 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-# Load PS1 (same as fedora in the bash-color-prompt package)
-if [ -f /etc/profile.d/bash-color-prompt.sh ]; then
-    . /etc/profile.d/bash-color-prompt.sh
+
+# Source git-prompt
+if [ -f /usr/share/git/completion/git-prompt.sh ]; then
+    source /usr/share/git/completion/git-prompt.sh
 fi
+
+# Configure git-prompt options
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWSTASHSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_PS1_SHOWUPSTREAM="auto"
+export GIT_PS1_SHOWCOLORHINTS=1
+
+if [ "$USER" = "root" ]; then
+    PROMPT_COLOR=35
+else
+    PROMPT_COLOR=32
+fi
+PROMPT_DIR_COLOR=34
+PROMPT_USERHOST='\u@\h'
+PROMPT_SEPARATOR=':'
+PROMPT_DIRECTORY='\w'
+PROMPT_START=''
+PROMPT_END=''
+PROMPT_GIT_COLOR=33
+
+PS1='\e[0m\]\e[${PROMPT_COLOR}m\]${PROMPT_USERHOST@P}\e[0m\]${PROMPT_SEPARATOR}\e[${PROMPT_DIR_COLOR}m\]${PROMPT_DIRECTORY@P}\e[0m\]$(__git_ps1 " (%s)")\e[0m\]$ '
 
 # User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
@@ -29,7 +52,7 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 
-export EDITOR=nvim
+export EDITOR=vim
 
 alias ls="ls --color=auto"
 alias l="ls -A"
@@ -40,7 +63,7 @@ alias n="nvim -O"
 alias rgrep="grep -R . -ne"
 alias venv="source bin/activate"
 alias ff='fastfetch'
-alias battery="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
+alias battery="upower -b"
 
 # C/C++ build
 alias cbuild='cmake --build .'
@@ -66,6 +89,7 @@ export HISTCONTROL=ignoreboth:erasedups
 export HISTIGNORE="l *:clear"
 export HISTIGNORE="ll *:clear"
 export HISTIGNORE="ls *:clear"
+export PROMPT_COMMAND='history -a'
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
