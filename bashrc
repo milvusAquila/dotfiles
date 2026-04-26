@@ -31,7 +31,7 @@ PROMPT_START=''
 PROMPT_END=''
 PROMPT_GIT_COLOR=33
 
-PS1='\e[0m\]\e[${PROMPT_COLOR}m\]${PROMPT_USERHOST@P}\e[0m\]${PROMPT_SEPARATOR}\e[${PROMPT_DIR_COLOR}m\]${PROMPT_DIRECTORY@P}\e[0m\]$(__git_ps1 " (%s)")\e[0m\]$ '
+PS1='\[\e[0m\]\[\e[${PROMPT_COLOR}m\]${PROMPT_USERHOST@P}\[\e[0m\]${PROMPT_SEPARATOR}\[\e[${PROMPT_DIR_COLOR}m\]${PROMPT_DIRECTORY@P}\[\e[0m\]$(__git_ps1 " (%s)")\[\e[0m\]$ '
 
 # User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
