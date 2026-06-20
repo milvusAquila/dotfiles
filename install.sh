@@ -17,12 +17,9 @@ function install() {
 	elif [[ -f "${real}" || -d "${real}" ]]; then
 		mv "${real}" "${real}.bak"
 	fi
-	source="$(realpath -s --relative-to "$(dirname "${real}")" "${FILE_PATH}/${dot}")"
-	exec_log "ln -s ${source} ${real}" "Create link from ${real} to ${source}"
+	src="$(realpath -s --relative-to "$(dirname "${real}")" "${FILE_PATH}/${dot}")"
+	exec_log "ln -s ${src} ${real}" "Create link from ${src} to ${real}"
 }
-
-# setup nvim
-install "${HOME}/.config/nvim" "nvim"
 
 # setup sway
 install "${HOME}/.config/sway" "sway"
@@ -38,3 +35,6 @@ install "${HOME}/.vimrc" "vimrc"
 
 # setup XCompose
 install "${HOME}/.XCompose" "XCompose"
+
+# setup gitconfig
+install "${HOME}/.gitconfig" "gitconfig"

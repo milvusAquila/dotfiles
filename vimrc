@@ -22,7 +22,9 @@ set incsearch " highlight search
 "Plug 'tpope/vim-sensible'
 "call plug#end()
 
-colorscheme habamax " other cool scheme: slate
+colorscheme slate
+" change color of matching parenthesis
+highlight MatchParen ctermfg=220 ctermbg=16
 
 " netwr (file broswer)
 let g:netrw_liststyle = 3 " tree

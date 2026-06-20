@@ -31,7 +31,8 @@ PROMPT_START=''
 PROMPT_END=''
 PROMPT_GIT_COLOR=33
 
-PS1='\[\e[0m\]\[\e[${PROMPT_COLOR}m\]${PROMPT_USERHOST@P}\[\e[0m\]${PROMPT_SEPARATOR}\[\e[${PROMPT_DIR_COLOR}m\]${PROMPT_DIRECTORY@P}\[\e[0m\]$(__git_ps1 " (%s)")\[\e[0m\]$ '
+PS1='\[\e[0m\][\[\e[33m\]$(date +%H:%M:%S)\[\e[0m\]] \[\e[${PROMPT_COLOR}m\]${PROMPT_USERHOST@P}\[\e[0m\]${PROMPT_SEPARATOR}\[\e[${PROMPT_DIR_COLOR}m\]${PROMPT_DIRECTORY@P}\[\e[0m\]$(__git_ps1 " (%s)")\[\e[0m\]$ '
+PROMPT_DIRTRIM=4 # number of folder before trimming
 
 # User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
@@ -54,16 +55,18 @@ unset rc
 
 export EDITOR=vim
 
-alias ls="ls --color=auto"
-alias l="ls -A"
-alias ll="ls -lAh"
-alias py="python"
-alias df="df -h"
-alias n="nvim -O"
-alias rgrep="grep -R . -ne"
-alias venv="source bin/activate"
+alias ls='ls --color=always'
+alias l='ls -A'
+alias ll='ls -lAh'
+alias py='python'
+alias df='df -h'
+alias vim='vim -O'
+alias grep='grep --color=always'
+alias rgrep='grep -R . -ne'
+alias venv='source bin/activate'
 alias ff='fastfetch'
-alias battery="upower -b"
+alias battery='upower -b'
+alias o='xdg-open'
 
 # C/C++ build
 alias cbuild='cmake --build .'
@@ -76,6 +79,31 @@ alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg
 alias update-arch='sudo pacman -Syu && sudo flatpak update && rustup update && cargo install-update --all && opam update && opam upgrade'
 alias update-mirrors='sudo reflector --verbose --protocol https --score 100 --latest 30 --fastest 5 --sort rate -c FR,DE,CH --save /etc/pacman.d/mirrorlist && sudo pacman -Syyu'
 alias clean-arch='sudo pacman -Sc'
+function clean-latex () {
+    for file in "$@"
+    do
+        rm -f "$1.log"
+        rm -f "$1.aux"
+        rm -f "$1.bbl"
+        rm -f "$1.blg"
+        rm -f "$1.nav"
+        rm -f "$1.out"
+        rm -f "$1.snm"
+        rm -f "$1.toc"
+        rm -f "$1.pytxcode"
+        rm -f "$1.synctex.gz"
+    done
+}
+function clean-ocaml () {
+    for file in "$@"
+    do
+        rm -f "$file.cmi"
+        rm -f "$file.cmx"
+        rm -f "$file.o"
+    done
+}
+
+alias musescore="flatpak run org.musescore.MuseScore"
 
 if [[ -x "$(command -v zoxide)" ]]; then
   eval "$(zoxide init bash)"

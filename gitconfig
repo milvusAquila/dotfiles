@@ -1,0 +1,9 @@
+[init]
+	defaultBranch = main
+[include]
+    path = ~/.gitconfig.local
+[alias]
+    co = checkout
+    st = status -s
+    ci = commit
+    lg = log --all --decorate --oneline --graph --pretty=format:'%C(yellow)%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
