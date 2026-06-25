@@ -27,6 +27,9 @@ install "${HOME}/.config/sway" "sway"
 # setup waybar
 install "${HOME}/.config/waybar" "waybar"
 
+# setup foot
+install "${HOME}/.config/foot" "foot"
+
 # setup bash
 install "${HOME}/.bashrc" "bashrc"
 

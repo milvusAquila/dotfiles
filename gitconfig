@@ -7,3 +7,15 @@
     st = status -s
     ci = commit
     lg = log --all --decorate --oneline --graph --pretty=format:'%C(yellow)%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+[color "diff"]
+	meta = blue bold
+	commit = magenta bold
+	frag = cyan bold
+	old = red
+	new = green
+	whitespace = red reverse
+
+	newMoved = cyan dim
+	oldMoved = blue dim
+	newMovedAlternative = cyan italic
+	oldMovedAlternative = blue italic
