@@ -58,7 +58,19 @@
     "clock": {
         "interval": 1,
         "format": "{:%H:%M:%S  %d/%m}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode"          : "year",
+            "mode-mon-col"  : 3,
+            "format": {
+                "months":     "<span color='#ffead3'><b>{}</b></span>",
+                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+            },
+            "iso8601": true
+        },
+        "on-click": "mode"
     },
     "cpu": {
         "interval": 1,
@@ -66,18 +78,16 @@
     },
     "memory": {
         "interval": 1,
-        "format": "{used:0.2f}G "
+        "format": "{used:0.2f}Gi ",
+        "tooltip-format": "RAM \t{used:0.2f} / {total:0.2f} GiB\nSWAP \t{swapUsed:0.2f} / {swapTotal:0.2f} GiB"
     },
     "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format-icons": ["", "", ""],
+        "tooltip": false
     },
     "backlight": {
-        // "device": "acpi_video1",
         "format": "{percent}% {icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
@@ -105,7 +115,6 @@
         }
     },
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{essid} ({signalStrength}%)",
