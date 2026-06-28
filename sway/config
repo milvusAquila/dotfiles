@@ -211,7 +211,7 @@ bar {
 
 default_border none
 bindsym $mod+z exec firefox
-bindsym $mod+e exec thunderbird
+bindsym $mod+t exec thunderbird
 
 bindsym $mod+Shift+w exec "bash ~/.config/scripts/wifi.sh"
 bindsym $mod+Shift+b exec "bash ~/.config/scripts/bluetooth.sh"
