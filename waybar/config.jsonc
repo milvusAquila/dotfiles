@@ -9,16 +9,16 @@
     // Choose the order of the modules
     "modules-left": [
         "sway/workspaces",
-        "sway/mode",
-        "custom/media"
+        "sway/mode"
     ],
     "modules-center": [
         "sway/window"
     ],
     "modules-right": [
         "idle_inhibitor",
-        "pulseaudio",
+        "wireplumber",
         "network",
+        "bluetooth",
         "cpu",
         "memory",
         "temperature",
@@ -74,7 +74,7 @@
     },
     "cpu": {
         "interval": 1,
-        "format": "{usage}% "
+        "format": "{usage:02}% "
     },
     "memory": {
         "interval": 1,
@@ -119,10 +119,21 @@
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{essid} ({signalStrength}%)",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "⚠"
+        "format-disabled": "",
+        "format-disconnected": ""
     },
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
+    "bluetooth": {
+        "format": "",
+        "format-on": "",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+    },
+    "wireplumber": {
+        "scroll-step": 1,
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
@@ -137,28 +148,15 @@
             "portable": "",
             "car": "",
             "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
-    },
-    "custom/media": {
-        "format": "{icon} {text}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+        }
     },
     "custom/power": {
-        "format" : "⏻ ",
+        "format" : "⏻",
         "tooltip": false,
         "menu": "on-click",
         "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
         "menu-actions": {
-            "shutdown": "shutdown",
+            "shutdown": "shutdown now",
             "reboot": "reboot",
             "suspend": "systemctl suspend"
         }

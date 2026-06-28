@@ -39,6 +39,7 @@ if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 export PATH=$PATH:~/.cargo/bin
+export PATH=$PATH:~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
@@ -72,7 +73,8 @@ alias o='xdg-open'
 alias cbuild='cmake --build .'
 
 # Network aliases
-alias wifi="\$(if [[ \"\$(nmcli radio wifi)\" = \"enabled\" ]]; then nmcli radio wifi off; else nmcli radio wifi on; fi)"
+alias wifi='bash -c ~/.config/scripts/wifi.sh'
+alias blue='bash -c ~/.config/scripts/bluetooth.sh'
 
 # Arch-specific aliases (from https://codeberg.org/Gaming-Linux-FR/Architect)
 alias fix-key='sudo rm /var/lib/pacman/sync/* && sudo rm -rf /etc/pacman.d/gnupg/* && sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -Sy --noconfirm archlinux-keyring && sudo pacman --noconfirm -Su'

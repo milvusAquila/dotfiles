@@ -33,6 +33,9 @@ install "${HOME}/.config/foot" "foot"
 # setup bash
 install "${HOME}/.bashrc" "bashrc"
 
+# setup scripts
+install "${HOME}/.config/scripts" "scripts"
+
 # setup vim
 install "${HOME}/.vimrc" "vimrc"
 
